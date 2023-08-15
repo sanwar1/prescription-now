@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/header'); %>
+    <!-- <body class="bg-light" onload="setPrescriptionDate()"> -->
+    <body class="bg-light">
+        <%- include('./partials/nav'); %>
+
+        <div class="container max-width: 800px;">
+            <!-- Logo and Header -->
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <br />
+                    <i
+                        class="bi bi-file-earmark-plus text-success"
+                        style="font-size: 100px"
+                    ></i>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto"><p class="fs-2 text">Edit Patient File</p></div>
+            </div>
+            <br />
+            <form action="/patients/<%=patient._id%>/edit" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <p class="fs-4 text">Patient Details</p>
+                    </div>
+                </div>
+                <!-- Patient ID: Hidden input -->
+                <input
+                    type="hidden"
+                    name="patientID"
+                    class="form-control"
+                    required
+                    value="<%= patient._id%>"
+                />
+                <!-- Patient Details -->
+                <div class="row">
+                    <div class="col">
+                        <label for="date" class="form-label"
+                            >Date Of Birth:</label
+                        >
+                        <input
+                            type="date"
+                            name="date"
+                            class="form-control"
+                            value="<%= patient.dateOfBirth.toISOString().substring(0, 10)%>"
+                            required
+                        /><br />
+                    </div>
+                    <div class="col">
+                        <label for="firstName" class="form-label">First Name:</label>
+                        <input
+                            type="text"
+                            name="firstName"
+                            class="form-control"
+                            value="<%= patient.firstName %>"
+                            required
+                        /><br />
+                    </div>
+                    <div class="col">
+                        <label for="lastName" class="form-label"
+                            >Last Name:</label
+                        >
+                        <input
+                            type="text"
+                            name="lastName"
+                            class="form-control"
+                            value="<%= patient.lastName %>"
+                            required
+                        /><br />
+                    </div>
+                    <div class="col">
+                        <label for="gender" class="form-label">Gender:</label>
+                        <select
+                            name="gender"
+                            class="form-control"
+                            value="<%= patient.gender %>"
+                            required>
+
+                            <% if(patient.gender == 'M'){
+                                %>
+                                    <option value="M" selected>Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="O">Other</option>
+                            <% }
+                                if(patient.gender == 'F'){ %>
+                                    <option value="M">Male</option>
+                                    <option value="F" selected>Female</option>
+                                    <option value="O">Other</option>
+                            <% }
+                                if(patient.gender == 'O'){ %>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="O" selected>Other</option>
+                            <%
+                               }
+                            %>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label for="phone" class="form-label"
+                            >Phone Number:</label
+                        >
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="form-control"
+                            pattern="[0-9]{10}"
+                            value="<%= patient.phoneNumber %>"
+                        />
+                    </div>
+                    <div class="col">
+                        <label for="email" class="form-label">Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            value="<%= patient.email %>"
+                            required
+                        />
+                    </div>
+                </div>
+                <br />
+
+                <div id="diagnosticTestsContainer">
+                    <% for(var i=0; i<patient.length; i++) {%>
+                        <input
+                        type="text"
+                        name="diagnosticTests[]"
+                        class="form-control"
+                        value="<%=patient.gender%>"
+                        required
+                        /><br />
+                    <% } %>
+                </div>
+
+                <input
+                    type="submit"
+                    value="Save to Database"
+                    class="btn btn-primary"
+                />
+            </form>
+        </div>
+        <!-- Footer -->
+        <%- include('./partials/footer'); %>
+
+        <script>
+        </script>
+        <!-- Boot Strap Scripts -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

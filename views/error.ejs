@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/header'); %>
+    <body class="bg-light">
+        <%- include('./partials/nav'); %>
+        <div class="container max-width: 800px;">
+            <br /><br /><br />
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <!-- <h1 class="display-1">ERROR!</h1> -->
+                    <div class="col-auto">
+                        <img
+                            src="./assets/warning.png"
+                            alt="logo"
+                            class="img-fluid"
+                            style="max-width: 160px"
+                        />
+                    </div>
+                    <!-- <i class="bi bi-exclamation-diamond-fill"></i> -->
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <h3><%= data.msg1 %></h3>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <p class="lead"><%= data.msg2 %></p>
+                </div>
+            </div>
+            <br />
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <a class="btn btn-primary btn-lg" href="/" role="button"
+                        >Home</a
+                    >
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

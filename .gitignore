@@ -1,0 +1,9 @@
+/node_modules
+/test
+/seed
+/.vscode
+/config
+/exports
+.env
+.vscode
+package-lock.json
