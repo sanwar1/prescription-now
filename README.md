@@ -35,3 +35,15 @@ The following are the features available in the application:
 1. Sign Up and Sign In options are available, with standard JWT token (SHA-256 authentication is implemented).
 2. Password change options are NOT available.
 3. For removal of users and password changes, contact the Application Administrator.
+
+## Potential Features for Improvement
+
+The following are the potential features that could be added for the benefit of the users.
+
+1. Creating a doctor's profile for them to manage their professional qualifications, registration details, contact details, as well as passwords.
+2. Doctors can be attached to specific prescriptions they have worked upon.
+3. Creating a view for doctors to see their own prescriptions.
+4. Creating a view for admins to see which patient's historical prescriptions.
+5. Feature for doctors/admin to update their own passwords.
+6. OTP verification for doctors to change their passwords.
+7. Emailing of prescriptions and invoices to patients to their registered email IDs.
