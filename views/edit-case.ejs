@@ -38,14 +38,14 @@
                 <div class="row">
                     <div class="col">
                         <label for="date" class="form-label"
-                            >PrescriptionDate:</label
+                            >Prescription Date:</label
                         >
                         <input
                             type="date"
                             name="date"
                             class="form-control"
                             id="prescriptionDate"
-                            value="<%= data.casefile.prescriptionDate%>"
+                            value="<%= data.casefile.prescriptionDate.toISOString().substring(0, 10)%>"
                             required
                         /><br />
                     </div>

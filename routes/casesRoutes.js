@@ -18,8 +18,8 @@ router.get("/recent", caseController.viewRecentCases);
 // View Case: WORKING
 router.get("/:id", caseController.viewCaseById);
 
-// View Case to be Edited: WORKING
-router.get("/:id/export", exportController.exportPrescription);
+// View Case to be Edited: SUSPENDED
+// router.get("/:id/export", exportController.exportPrescription);
 
 // View Case to be Edited: WORKING
 router.get("/:id/edit", caseController.editCase);

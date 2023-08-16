@@ -144,6 +144,7 @@
                     </div>
                 </div>
                 <br />
+                <!-- Symptoms and History -->
                 <div class="row">
                     <div class="col">
                         <label for="symptomsHistory" class="form-label"
@@ -159,28 +160,12 @@
                     </div>
                 </div>
                 <br />
-                <div class="row">
-                    <div class="col">
-                        <label for="recommendations" class="form-label"
-                            >Recommendations:</label
-                        >
-                        <textarea
-                            name="recommendations"
-                            rows="4"
-                            cols="50"
-                            class="form-control"
-                            required
-                        ></textarea>
-                    </div>
-                </div>
-                <br />
                 <!-- Medications -->
                 <div class="row">
                     <div class="col">
                         <p class="fs-4 text">Medications</p>
                     </div>
                 </div>
-
                 <div class="container" id="prescriptionContainer">
                     <div class="row">
                         <div class="col-6">
@@ -231,7 +216,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col">
                         <button
@@ -243,13 +227,12 @@
                         ><br /><br />
                     </div>
                 </div>
-
+                <!-- Diagnostics -->
                 <div class="row">
                     <div class="col">
                         <p class="fs-4 text">Diagnostics</p>
                     </div>
                 </div>
-
                 <div id="diagnosticTestsContainer">
                     <input
                         type="text"
@@ -270,7 +253,23 @@
                         <br /><br />
                     </div>
                 </div>
-
+                <!-- Recommendations -->
+                <div class="row">
+                    <div class="col">
+                        <label for="recommendations" class="form-label"
+                            >Recommendations:</label
+                        >
+                        <textarea
+                            name="recommendations"
+                            rows="4"
+                            cols="50"
+                            class="form-control"
+                            required
+                        ></textarea>
+                    </div>
+                </div>
+                <br />
+                <!-- Submit -->
                 <input
                     type="submit"
                     value="Save to Database"
@@ -316,7 +315,12 @@
                 dosage.required = true;
                 col2.appendChild(dosage);
                 // Adding options in the select field
-                var value = ["OD", "BD", "TD", "SOS"];
+                var value = [
+                    "Once a Day",
+                    "Twice a Day",
+                    "Three times a Day",
+                    "SOS",
+                ];
                 var text = [
                     "Once a Day",
                     "Twice a Day",

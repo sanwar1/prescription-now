@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const pdf = require("html-pdf");
-const path = require("path");
 const casesRoutes = require("./casesRoutes");
 const patientRoutes = require("./patientRoutes");
 const authController = require("../controllers/authController");
 const homeController = require("../controllers/homeController");
+const exportContoller = require("../controllers/exportController");
 const { verifySession } = require("../middleware/authFunctions");
 
 // Sign-In Page and Methods
@@ -23,12 +22,10 @@ router.get("/signout", authController.signOut); // Working
 router.get("/", verifySession, homeController.homeView);
 
 // Other routes
-router.use("/patients", verifySession, patientRoutes);
-router.use("/cases", verifySession, casesRoutes);
+router.use("/patients", verifySession, patientRoutes); // Working
+router.use("/cases", verifySession, casesRoutes); // Working
 
-// PDF export route
-// router.post("/export", (req, res) => {
-
-// });
+// Print preview route
+router.get("/export/:id", exportContoller.exportPrescription); // Pending
 
 module.exports = router;
