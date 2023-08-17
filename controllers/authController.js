@@ -20,11 +20,11 @@ exports.signUpSubmit = async (req, res, next) => {
             );
         } else {
             // Check if the user already exists
-            let user = await User.findOne({ email: req.body.email });
+            let user = await User.findOne({ username: req.body.username });
             if (user) {
                 next(
                     createError.BadRequest(
-                        "User already registered with this Email ID."
+                        "User already registered with this username."
                     )
                 );
             } else {
@@ -55,48 +55,38 @@ exports.signInForm = async (req, res, next) => {
 };
 
 exports.signInSubmit = async (req, res, next) => {
+    console.log("Incoming request: " + JSON.stringify(req.body));
     // Check if the user actually exists, else redirect to another page
-    let user = await User.findOne({ email: req.body.email });
+    let user = await User.findOne({ username: req.body.username });
+    console.log("Retrieved user: " + user);
     if (!user) {
         const data = { msg: "Invalid Credentails!" };
         return res.redirect(`/signin?alert=${data.msg}`);
-    }
+    } else {
+        // Check if the password hash matches
+        const storedPassword = user.password;
+        const givenPassword = authFunctions.passwordHash(req.body.password);
 
-    // Check if the password hash matches
-    const storedPassword = user.password;
-    const givenPassword = authFunctions.passwordHash(req.body.password);
-
-    // console.log("Comparing pwds: \n" + storedPassword + "\n" + givenPassword);
-    if (authFunctions.compareHash(storedPassword, givenPassword)) {
-        // console.log("Password hashes match!");
-        // If matches, create access token, refresh token, set cookie, redirect to profile
-        const payload = {
-            email: req.body.email,
-            role: user.role,
-        };
-        const accessToken = authFunctions.createAccessToken(payload);
-        const refreshToken = authFunctions.createRefreshToken(payload);
-        if (accessToken && refreshToken) {
-            // console.log(
-            //     JSON.stringify(accessToken) +
-            //         "\n" +
-            //         JSON.stringify(refreshToken)
-            // );
-            // console.log("Tokens generated!");
-            res.cookie("auth_token", accessToken);
-            res.cookie("refresh_token", refreshToken);
-            res.redirect("/");
+        if (authFunctions.compareHash(storedPassword, givenPassword)) {
+            const payload = {
+                username: req.body.username,
+                role: user.role,
+            };
+            const accessToken = authFunctions.createAccessToken(payload);
+            const refreshToken = authFunctions.createRefreshToken(payload);
+            if (accessToken && refreshToken) {
+                res.cookie("auth_token", accessToken);
+                res.cookie("refresh_token", refreshToken);
+                res.redirect("/");
+            } else {
+                const data = { msg: "Please Login Again!" };
+                res.redirect(`/signin?alert=${data.msg}`);
+            }
         } else {
-            // console.log("Tokens ERROR!");
-            // console.log(accessToken + "\n" + refreshToken);
-            const data = { msg: "Please Login Again!" };
+            // If no, redirect to Sign In
+            const data = { msg: "Invalid Credentails!" };
             res.redirect(`/signin?alert=${data.msg}`);
         }
-    } else {
-        // console.log("Passwords DON'T MATCH!");
-        // If no, redirect to Sign In
-        const data = { msg: "Invalid Credentails!" };
-        res.redirect(`/signin?alert=${data.msg}`);
     }
 };
 
@@ -111,6 +101,4 @@ exports.signOut = async (req, res, next) => {
     res.clearCookie("auth_token");
     res.clearCookie("refresh_token");
     res.redirect(`/signin?alert=${data.msg}`);
-
-    // res.status(200).sendFile("html/signout.html", { root: __dirname });
 };
