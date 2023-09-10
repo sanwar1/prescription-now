@@ -96,8 +96,8 @@ exports.newCaseSubmit = async (req, res, next) => {
             let newCase = new Case({
                 patient: savedPatient._id,
                 prescriptionDate: req.body.date,
-                chiefComplaint: req.body.chiefComplaint,
-                symptomsHistory: req.body.symptomsHistory,
+                complaintAndSymptoms: req.body.complaintAndSymptoms,
+                patientHistory: req.body.patientHistory,
                 recommendations: req.body.recommendations,
                 prescription: prescription,
                 diagnosticTests: req.body.diagnosticTests,
@@ -105,13 +105,13 @@ exports.newCaseSubmit = async (req, res, next) => {
             let savedCase = await newCase.save();
             res.redirect(`/cases/${savedCase._id}`);
         } else {
-            // If old, create case
+            // If old,
             // then, create case
             let newCase = new Case({
-                patient: req.body.patientID,
+                patient: savedPatient._id,
                 prescriptionDate: req.body.date,
-                chiefComplaint: req.body.chiefComplaint,
-                symptomsHistory: req.body.symptomsHistory,
+                complaintAndSymptoms: req.body.complaintAndSymptoms,
+                patientHistory: req.body.patientHistory,
                 recommendations: req.body.recommendations,
                 prescription: prescription,
                 diagnosticTests: req.body.diagnosticTests,
@@ -174,14 +174,15 @@ exports.updateCase = async (req, res, next) => {
         const prescription = prescriptionMaker(
             req.body.medicine,
             req.body.dosage,
+            req.body.frequency,
             req.body.duration
         );
 
         await Case.findByIdAndUpdate(req.params.id, {
             $set: {
                 prescriptionDate: req.body.date,
-                chiefComplaint: req.body.chiefComplaint,
-                symptomsHistory: req.body.symptomsHistory,
+                complaintAndSymptoms: req.body.complaintAndSymptoms,
+                patientHistory: req.body.patientHistory,
                 recommendations: req.body.recommendations,
                 prescription: prescription,
                 diagnosticTests: req.body.diagnosticTests,

@@ -1,0 +1,81 @@
+<script>
+    // JavaScript functions to add new rows for prescription and diagnostic tests
+    function addPrescriptionRow() {
+        const container = document.getElementById("prescriptionContainer");
+        // Creating a row
+        const row = document.createElement("div");
+        row.className = "row ";
+        container.appendChild(row);
+
+        // Creating a col1
+        const col1 = document.createElement("div");
+        col1.className = "col-4 ";
+        row.appendChild(col1);
+        // Creating an input in first column
+        const medicine = document.createElement("input");
+        medicine.className = "form-control";
+        medicine.type = "text";
+        medicine.name = "medicine[]";
+        medicine.required = true;
+        col1.appendChild(medicine);
+
+        // Creating a col2
+        const col2 = document.createElement("div");
+        col2.className = "col-2 ";
+        row.appendChild(col2);
+        // Creating an input in first column
+        const dosage = document.createElement("input");
+        dosage.className = "form-control";
+        dosage.type = "text";
+        dosage.name = "dosage[]";
+        dosage.required = true;
+        col2.appendChild(dosage);
+
+        // Creating a col3
+        const col3 = document.createElement("div");
+        col3.className = "col-3 ";
+        row.appendChild(col3);
+        // Creating a select in the second column
+        const frequency = document.createElement("select");
+        frequency.id = "mySelect";
+        frequency.className = "form-control";
+        frequency.name = "frequency[]";
+        frequency.required = true;
+        col3.appendChild(frequency);
+        // Adding options in the select field
+        var value = ["Once a Day", "Twice a Day", "Three times a Day", "SOS"];
+        var text = ["Once a Day", "Twice a Day", "Three times a Day", "SOS"];
+        for (var i = 0; i < value.length; i++) {
+            var option = document.createElement("option");
+            option.value = value[i];
+            option.text = text[i];
+            frequency.appendChild(option);
+        }
+
+        // Creating a col4
+        const col4 = document.createElement("div");
+        col4.className = "col-3 ";
+        row.appendChild(col4);
+        // Creating an input in the third column
+        const duration = document.createElement("input");
+        duration.className = "form-control";
+        duration.type = "number";
+        duration.name = "duration[]";
+        duration.min = "0";
+        duration.max = "90";
+        col4.appendChild(duration);
+        col4.appendChild(document.createElement("br"));
+        // col4.appendChild(document.createElement("br"));
+    }
+
+    function addDiagnosticTest() {
+        const container = document.getElementById("diagnosticTestsContainer");
+        const input = document.createElement("input");
+        input.className = "form-control";
+        input.type = "text";
+        input.name = "diagnosticTests[]";
+        input.required = true;
+        container.appendChild(input);
+        container.appendChild(document.createElement("br"));
+    }
+</script>

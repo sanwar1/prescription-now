@@ -25,23 +25,23 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title"><%= caseFile.prescriptionDate.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/ /g, '-') %></h5>
+                  <h6 class="card-title"><%= caseFile.prescriptionDate.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/ /g, '-') %></h6>
                   <p class="text-body-tertiary">Prescription Date</p>
                 </div>
                 <div class="col">
-                  <h5 class="card-title"><%= patient.firstName %></h5>
+                  <h6 class="card-title"><%= patient.firstName %></h6>
                   <p class="text-body-tertiary">First Name</p>
                 </div>
                 <div class="col">
-                  <h5 class="card-title"><%= patient.lastName %></h5>
+                  <h6 class="card-title"><%= patient.lastName %></h6>
                   <p class="text-body-tertiary">Last Name</p>
                 </div>
                 <div class="col">
-                  <h5 class="card-title"><%= new Date().getFullYear() - patient.dateOfBirth.getFullYear() + 'y' %></h5>
+                  <h6 class="card-title"><%= new Date().getFullYear() - patient.dateOfBirth.getFullYear() + 'y' %></h6>
                   <p class="text-body-tertiary">Age</p>
                 </div>
                 <div class="col">
-                  <h5 class="card-title"><%= patient.gender %></h5>
+                  <h6 class="card-title"><%= patient.gender %></h6>
                   <p class="text-body-tertiary">Gender</p>
                 </div>
               </div>
@@ -60,28 +60,24 @@
         </div>
       </div>
       <br />
-      <!-- Chief Complaint -->
+      <!-- Chief Complaint/Symptoms -->
       <div class="row">
         <div class="col-12">
-          <div class="card">
-            <div class="card-header">Chief Complaint</div>
+          <div class="card" style="white-space: pre-line;">
+            <div class="card-header">Complaint & Symptoms</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <%= caseFile.chiefComplaint %>
-              </li>
+              <li class="list-group-item"><%= caseFile.complaintAndSymptoms %></li>
             </ul>
           </div>
         </div>
       </div><br/>
-      <!-- Symptoms/History -->
+      <!-- History -->
       <div class="row">
         <div class="col-12">
-          <div class="card">
-            <div class="card-header">Symptoms / History</div>
+          <div class="card" style="white-space: pre-line;">
+            <div class="card-header">Patient History</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <%= caseFile.symptomsHistory %>
-              </li>
+              <li class="list-group-item"><%= caseFile.patientHistory %></li>
             </ul>
           </div>
         </div>
@@ -90,12 +86,10 @@
       <!-- Symptoms/History -->
       <div class="row">
         <div class="col-12">
-          <div class="card">
+          <div class="card" style="white-space: pre-line;">
             <div class="card-header">Recommendations</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <%= caseFile.recommendations %>
-              </li>
+              <li class="list-group-item"><%= caseFile.recommendations %></li>
             </ul>
           </div>
         </div>
@@ -112,14 +106,16 @@
                       <div class="row">
                         <div class="col">
                         <%= caseFile.prescription[i].medicine %>
-                      </div>
-                      <div class="col">
-                        <button type="button" class="btn btn-secondary">
-                            <%= caseFile.prescription[i].dosage %>
-                        </button>
-                      </div>
-                      <div class="col">
-                        <%= caseFile.prescription[i].duration%> days
+                        </div>
+                        <div class="col">
+                          <%= caseFile.prescription[i].dosage %>
+                          </div>
+                        <div class="col">
+                          <strong><%= caseFile.prescription[i].frequency %></strong>
+                        </div>
+                        <div class="col">
+                          <%= caseFile.prescription[i].duration%> days
+                        </div>
                       </div>
                     </li>
                 <% } %>

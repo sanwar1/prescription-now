@@ -26,13 +26,13 @@
             <!-- Prescription Heading -->
             <div class="row justify-content-center ">
                 <div class="col-auto">
-                    <p class="h4 text-success">Prescription</p>
+                    <p class="h5 text-success">PRESCRIPTION</p>
                 </div>
             </div>
             <!-- Patient Details -->
             <div class="row justify-content-center text-center ">
                 <div class="col">
-                    <p class="h5">
+                    <p class="h6">
                         <%=
                         caseFile.prescriptionDate.toLocaleDateString('en-IN', {
                         day: '2-digit', month: 'short', year: 'numeric'
@@ -41,22 +41,22 @@
                     <p class="text-body-tertiary small">Prescription Date</p>
                 </div>
                 <div class="col">
-                    <p class="h5"><%= patient.firstName %></p>
+                    <p class="h6"><%= patient.firstName %></p>
                     <p class="text-body-tertiary small">First Name</p>
                 </div>
                 <div class="col">
-                    <p class="h5"><%= patient.lastName %></p>
+                    <p class="h6"><%= patient.lastName %></p>
                     <p class="text-body-tertiary small">Last Name</p>
                 </div>
                 <div class="col">
-                    <p class="h5">
+                    <p class="h6">
                         <%= new Date().getFullYear() -
                         patient.dateOfBirth.getFullYear() + 'y' %>
                     </p>
                     <p class="text-body-tertiary small">Age</p>
                 </div>
                 <div class="col">
-                    <p class="h5"><%= patient.gender %></p>
+                    <p class="h6"><%= patient.gender %></p>
                     <p class="text-body-tertiary small">Gender</p>
                 </div>
             </div>

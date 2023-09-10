@@ -14,11 +14,15 @@
                             <h5 class="card-title">Total Patients</h5>
                             <% if (data.percentageIncrease > 0) { %>
                             <p class="text-success">
-                                <%= data.percentageIncrease %>% monthly increase
+                                <%=
+                                parseFloat(data.percentageIncrease).toFixed(0)
+                                %>% monthly increase
                             </p>
                             <%} else { %>
                             <p class="text-danger">
-                                <%= data.percentageIncrease %>% monthly decrease
+                                <%=
+                                parseFloat(data.percentageIncrease).toFixed(0)
+                                %>% monthly decrease
                             </p>
                             <% } %>
                             <a href="/patients" class="btn btn-primary"
@@ -51,7 +55,9 @@
                             </h1>
                             <h5 class="card-title">Female Patients</h5>
                             <p class="text-success">
-                                <%= data.pcFemalePatients%>% of All patients
+                                <%=
+                                parseFloat(data.pcFemalePatients).toFixed(0)%>%
+                                of All patients
                             </p>
                             <a href="/patients/female" class="btn btn-primary"
                                 >View Female Patients</a

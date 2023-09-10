@@ -23,8 +23,8 @@
             <thead class="table-dark">
               <tr>
                 <th scope="col">Date</th>
-                <th scope="col">Chief Complaint</th>
-                <th scope="col">Symptoms</th>
+                <th scope="col">Complaint</th>
+                <th scope="col">History</th>
                 <!-- <th scope="col" >Complaint</th> -->
                 <!-- <th scope="col">Prescription</th>
                 <th scope="col">Tests</th> -->
@@ -37,8 +37,8 @@
                 <% for(var i=0; i<cases.length; i++) {%>
                     <tr>
                         <td scope = "row"><%= cases[i].prescriptionDate.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).replace(/ /g, '-') %></td>
-                        <td><%= cases[i].chiefComplaint %></td>
-                        <td><%= cases[i].symptomsHistory %></td>
+                        <td class="text-truncate"><%= cases[i].complaintAndSymptoms %></td>
+                        <td class="text-truncate"><%= cases[i].patientHistory %></td>
                         <!-- <td><%= cases[i].chiefComplaint %></td> -->
                         <!-- <td><%= cases[i].email %></td> -->
                         <td>

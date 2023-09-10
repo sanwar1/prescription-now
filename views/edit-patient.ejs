@@ -20,7 +20,7 @@
                 <div class="col-auto"><p class="fs-2 text">Edit Patient File</p></div>
             </div>
             <br />
-            <form action="/patients/<%=patient._id%>/edit" method="POST">
+            <form action="/patients/<%=patient._id%>/edit" method="POST" enctype="application/x-www-form-urlencoded">
                 <div class="row">
                     <div class="col">
                         <p class="fs-4 text">Patient Details</p>

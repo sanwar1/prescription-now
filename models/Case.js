@@ -7,23 +7,30 @@ const caseSchema = new mongoose.Schema(
             type: Date,
             required: [true, "Prescription date is required."],
         },
-        chiefComplaint: {
+        complaintAndSymptoms: {
             type: String,
-            required: [true, "Please enter the patient's chief complaint."],
+            required: [
+                true,
+                "Please enter the patient's chief complaint and symptoms.",
+            ],
         },
-        symptomsHistory: {
+        patientHistory: {
             type: String,
-            required: [true, "Please enter the patient's symptoms/history."],
+            required: [true, "Please enter the patient's history."],
         },
         recommendations: {
             type: String,
-            required: [true, "Please enter the patient's symptoms/history."],
+            required: [
+                true,
+                "Please enter the doctor's recommendations for the patient.",
+            ],
         },
         prescription: {
             type: [
                 {
                     medicine: String,
                     dosage: String,
+                    frequency: String,
                     duration: Number,
                 },
             ],
@@ -42,12 +49,13 @@ const schema = (input) =>
     joi
         .object({
             patientID: joi.any().required(),
-            chiefComplaint: joi.string().min(2).required(),
-            symptomsHistory: joi.string().min(2).required(),
+            complaintAndSymptoms: joi.string().min(2).required(),
+            patientHistory: joi.string().min(2).required(),
             recommendations: joi.string().min(2).required(),
             prescription: joi.array().items({
                 name: joi.string(),
                 dosage: joi.string(),
+                frequency: joi.string(),
                 duration: joi.number(),
             }),
             diagnosticTests: joi.array().items(joi.string()),

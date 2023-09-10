@@ -1,0 +1,143 @@
+<!-- Chief Complaint -->
+<div class="row">
+    <div class="col">
+        <label for="complaintAndSymptoms" class="form-label"
+            >Complaint & Symptoms:</label
+        >
+        <textarea
+            name="complaintAndSymptoms"
+            rows="4"
+            cols="50"
+            class="form-control"
+            style="white-space: pre-wrap"
+            required
+        ></textarea>
+    </div>
+</div>
+<br />
+<!-- Symptoms and History -->
+<div class="row">
+    <div class="col">
+        <label for="patientHistory" class="form-label">Patient History:</label>
+        <textarea
+            name="patientHistory"
+            rows="4"
+            cols="50"
+            class="form-control"
+            style="white-space: pre-wrap"
+            required
+        ></textarea>
+    </div>
+</div>
+<br />
+<!-- Medications -->
+<div class="row">
+    <div class="col">
+        <p class="fs-4 text">Medications</p>
+    </div>
+</div>
+<div class="container" id="prescriptionContainer">
+    <div class="row">
+        <div class="col-4">
+            <p class="fs-6 text">Medicine</p>
+        </div>
+        <div class="col-2">
+            <p class="fs-6 text">Dosage</p>
+        </div>
+        <div class="col-3">
+            <p class="fs-6 text">Frequency</p>
+        </div>
+        <div class="col-3">
+            <p class="fs-6 text">Duration (in days)</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4" id="medicine">
+            <input
+                type="text"
+                name="medicine[]"
+                class="form-control"
+                required
+            />
+            <!-- <br /> -->
+        </div>
+        <div class="col-2" id="dosage">
+            <input type="text" name="dosage[]" class="form-control" required />
+            <!-- <br /> -->
+        </div>
+        <div class="col-3" id="frequncy">
+            <select name="frequncy[]" class="form-control" required>
+                <option value="Once a Day">Once a Day</option>
+                <option value="Twice a Day">Twice a Day</option>
+                <option value="Three times a Day">Three times a Day</option>
+                <option value="SOS">SOS</option>
+            </select>
+            <br />
+        </div>
+        <div class="col-3" id="duration">
+            <input
+                type="number"
+                name="duration"
+                class="form-control"
+                min="0"
+                max="90"
+                required
+            /><br />
+            <!-- <br /> -->
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <button
+            type="button"
+            onclick="addPrescriptionRow()"
+            class="btn btn-secondary"
+        >
+            Add Medicines</button
+        ><br /><br />
+    </div>
+</div>
+<!-- Diagnostics -->
+<div class="row">
+    <div class="col">
+        <p class="fs-4 text">Diagnostics</p>
+    </div>
+</div>
+<div id="diagnosticTestsContainer">
+    <input
+        type="text"
+        name="diagnosticTests[]"
+        class="form-control"
+        required
+    /><br />
+</div>
+<div class="row">
+    <div class="col">
+        <button
+            type="button"
+            onclick="addDiagnosticTest()"
+            class="btn btn-secondary"
+        >
+            Add Tests
+        </button>
+        <br /><br />
+    </div>
+</div>
+<!-- Recommendations -->
+<div class="row">
+    <div class="col">
+        <label for="recommendations" class="form-label">Recommendations:</label>
+        <textarea
+            name="recommendations"
+            rows="4"
+            cols="50"
+            class="form-control"
+            style="white-space: pre-wrap"
+            required
+        ></textarea>
+    </div>
+</div>
+<br />
+<!-- Submit -->
+<input type="submit" value="Save to Database" class="btn btn-primary" />
