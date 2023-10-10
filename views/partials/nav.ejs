@@ -3,7 +3,7 @@
     data-bs-theme="dark"
 >
     <!-- Navbar content -->
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="/">Dr Anam's Clinic</a>
         <button
             class="navbar-toggler"
@@ -30,11 +30,23 @@
                     <a class="nav-link" href="/cases">Case Records</a>
                 </li>
             </ul>
-            <span class="navbar-text">
-                <a class="nav-link" href="/signout">
-                    <i class="bi bi-power"></i>
-                </a>
-            </span>
+            <div class="navbar-text dropdown">
+                <i
+                    class="bi bi-person-circle dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style="font-size: 1.25rem; color: white"
+                >
+                </i>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/profile" class="dropdown-item">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="/signout" class="dropdown-item">Signout</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

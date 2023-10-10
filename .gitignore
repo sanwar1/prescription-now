@@ -4,6 +4,7 @@
 /.vscode
 /config
 /exports
+/design
 .env
 .vscode
 package-lock.json

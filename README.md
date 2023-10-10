@@ -23,8 +23,8 @@ The following are the features available in the application:
 
 ### Prescription Details
 
-1. Chief complaint, symptoms/history, medications, diagnostic tests can be prescribed to each patient.
-2. Medications will require three mandatory fields: Name of medicine, dosage (number of times a day), and duration (number of days).
+1. Chief complaint/Symptoms, Patient History, medications, diagnostic tests and recommendations can be prescribed to each patient.
+2. Medications will require four mandatory fields: Name of medicine, dosage, frequency, and duration (number of days).
 3. Any number of medications can be prescribed to the patients.
 4. Any number of diagnostic tests can be prescribed to the patients.
 

@@ -26,6 +26,6 @@ router.use("/patients", verifySession, patientRoutes); // Working
 router.use("/cases", verifySession, casesRoutes); // Working
 
 // Print preview route
-router.get("/export/:id", exportContoller.exportPrescription); // Pending
+router.get("/export/:id", verifySession, exportContoller.exportPrescription); // Working
 
 module.exports = router;

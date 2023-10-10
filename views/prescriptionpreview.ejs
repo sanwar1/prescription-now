@@ -64,15 +64,15 @@
             <!-- Complaint -->
             <div class="row justify-content-center ">
                 <div class="col-12">
-                    <p class="h5 text-body-tertiary">Chief Complaint</p>
-                    <p class="fs-6"><%= caseFile.chiefComplaint %></p>
+                    <p class="h5 text-body-tertiary">Complaint & Symptoms</p>
+                    <p class="fs-6" style="white-space: pre-line;"><%= caseFile.complaintAndSymptoms %></p>
                 </div>
             </div>
             <!-- Symptoms/History -->
             <div class="row justify-content-center ">
                 <div class="col-12">
-                    <p class="h5 text-body-tertiary">Symptoms / History</p>
-                    <p class="fs-6"><%= caseFile.symptomsHistory %></p>
+                    <p class="h5 text-body-tertiary">Patient History</p>
+                    <p class="fs-6" style="white-space: pre-line;"><%= caseFile.patientHistory%></p>
                 </div>
             </div>
             <!-- Medications -->
@@ -85,7 +85,10 @@
                                 <%= caseFile.prescription[i].medicine %>
                             </div>
                             <div class="col">
-                                <span class="text-success strong"><%= caseFile.prescription[i].dosage %></span>
+                                <%= caseFile.prescription[i].dosage %>
+                            </div>
+                            <div class="col">
+                                <span class="text-success strong"><%= caseFile.prescription[i].frequency %></span>
                             </div>
                             <div class="col">
                                 <%= caseFile.prescription[i].duration%> days
@@ -113,7 +116,7 @@
             <div class="row justify-content-center ">
                 <div class="col-12">
                     <p class="h5 text-body-tertiary">Recommendations</p>
-                    <p class="fs-6"><%= caseFile.recommendations %></p>
+                    <p class="fs-6" style="white-space: pre-line;"><%= caseFile.recommendations %></p>
                 </div>
             </div><br/>
             <div class="row justify-content-center ">
